@@ -7,11 +7,11 @@ int main() {
 
     // todo. csv 파일 읽어서 Insert 필요.
 
-    tree.Insert("minwon", 20);
+    tree.Insert("mw", 20);
     tree.Insert("a", 10);
     tree.Insert("b", 50);
-    tree.Insert("b", 5);
-    tree.Insert("b", 90);
+    tree.Insert("c", 5);
+    tree.Insert("d", 90);
 
     tree.Show();
 

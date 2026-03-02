@@ -8,6 +8,8 @@
 #include "Node.h"
 #include "../PlayerInfo.h"
 
+using InOrderFunction = void (*)(Node<PlayerInfo>* node);
+
 class BinarySearchTree {
     using TreeNode = Node<PlayerInfo>;
 public:
@@ -24,7 +26,7 @@ public:
 private:
     bool InsertRecursive(TreeNode* node, const char* name, int score);
     void InOrder(TreeNode* node);
-    void InOrderRecursive(TreeNode* node);
+    void InOrderRecursive(TreeNode* node, InOrderFunction func);
 private:
     TreeNode* root = nullptr;
 };

@@ -31,16 +31,18 @@ const Node<PlayerInfo>& BinarySearchTree::Find(const char* name) {}
 void BinarySearchTree::Top(int count) {}
 
 void BinarySearchTree::InOrder(TreeNode* node) {
-    InOrderRecursive(node);
+    InOrderRecursive(node, [](TreeNode* node) {
+        std::cout << "이름: " << node->Value().playerName
+         << "    점수:  "  << node->Value().score << "\n";
+    });
 }
 
-void BinarySearchTree::InOrderRecursive(TreeNode* node) {
+void BinarySearchTree::InOrderRecursive(TreeNode* node, InOrderFunction func) {
     if (!node) return;
 
-    InOrderRecursive(node->Left());
-    std::cout << "이름: " << node->Value().playerName
-         << "    점수:  "  << node->Value().score << "\n";
-    InOrderRecursive(node->Right());
+    InOrderRecursive(node->Left(), func);
+    func(node);
+    InOrderRecursive(node->Right(), func);
 }
 
 
