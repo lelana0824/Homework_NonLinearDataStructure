@@ -9,19 +9,24 @@
 #include "../PlayerInfo.h"
 
 class BinarySearchTree {
+    using TreeNode = Node<PlayerInfo>;
 public:
     BinarySearchTree();
     ~BinarySearchTree();
 
     bool Insert(const char* name, int score);
-    bool Delete();
-    const Node<PlayerInfo>& Find(const char* name);
+    bool Delete(const char* name);
+    const TreeNode& Find(const char* name);
     void Top(int count);
-
+    inline void Show() {
+        InOrder(root);
+    };
 private:
-
+    bool InsertRecursive(TreeNode* node, const char* name, int score);
+    void InOrder(TreeNode* node);
+    void InOrderRecursive(TreeNode* node);
 private:
-    Node<PlayerInfo>* root = nullptr;
+    TreeNode* root = nullptr;
 };
 
 

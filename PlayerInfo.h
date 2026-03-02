@@ -5,26 +5,19 @@
 #ifndef HOMEWORK_NONLINEARDATASTRUCTURE_PLAYERINFO_H
 #define HOMEWORK_NONLINEARDATASTRUCTURE_PLAYERINFO_H
 #include <cstring>
+#include <string>
 
 
 class PlayerInfo {
 public:
-    PlayerInfo(const char* playerName, int score): score(score) {
-        int length = strlen(playerName);
-        char* newPlayerName = new char[length + 1];
-
-        strcpy(newPlayerName, playerName);
-
-        this->playerName = newPlayerName;
+    PlayerInfo(std::string playerName, int score): score(score) {
+        this->playerName = playerName;
     }
     ~PlayerInfo() {
-        if (playerName) {
-            delete[] playerName;
-            playerName = nullptr;
-        }
+
     }
 
-    char* playerName = nullptr;
+    std::string playerName;
     int score;
 private:
 

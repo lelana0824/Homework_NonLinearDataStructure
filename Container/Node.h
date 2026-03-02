@@ -12,11 +12,22 @@ public:
     Node(T value): value(value) {}
     ~Node() {}
 
-    T& Value() const { return value; };
+    void AddLeft(Node<T>* node, Node<T>* inParent) {
+        node->parent = inParent;
+        this->left = node;
+    }
+    void AddRight(Node<T>* node, Node<T>* inParent) {
+        node->parent = inParent;
+        this->right = node;
+    }
+
+    const T& Value()  { return value; };
+    Node<T>* Left()  { return left;}
+    Node<T>* Right()  { return right;}
 private:
-    Node* parent = nullptr;
-    Node left = nullptr;
-    Node right = nullptr;
+    Node<T>* parent = nullptr;
+    Node<T>* left = nullptr;
+    Node<T>* right = nullptr;
 
     T value;
 };
