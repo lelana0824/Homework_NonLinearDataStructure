@@ -3,4 +3,5 @@ project(Homework_NonLinearDataStructure)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Homework_NonLinearDataStructure main.cpp)
+add_executable(Homework_NonLinearDataStructure main.cpp
+        Container/Node.h)
