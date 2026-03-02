@@ -7,8 +7,9 @@
 
 #include "Node.h"
 #include "../PlayerInfo.h"
+#include <functional>
 
-using InOrderFunction = void (*)(Node<PlayerInfo>* node);
+using InOrderFunction = std::function<void(Node<PlayerInfo>* node)>;
 
 class BinarySearchTree {
     using TreeNode = Node<PlayerInfo>;
@@ -17,8 +18,8 @@ public:
     ~BinarySearchTree();
 
     bool Insert(const char* name, int score);
-    bool Delete(const char* name);
-    const TreeNode& Find(const char* name);
+    bool Delete(std::string name);
+    TreeNode& Find(std::string name);
     void Top(int count);
     inline void Show() {
         InOrder(root);

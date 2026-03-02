@@ -20,8 +20,12 @@ public:
         node->parent = inParent;
         this->right = node;
     }
+    void SetValue(const T& value) {
+        this->value = value;
+    }
 
     const T& Value()  { return value; };
+    Node<T>* Parent()  { return parent;}
     Node<T>* Left()  { return left;}
     Node<T>* Right()  { return right;}
 private:
