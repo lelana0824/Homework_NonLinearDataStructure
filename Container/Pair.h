@@ -7,19 +7,17 @@
 template<typename KeyType, typename ValueType>
 class Pair {
 public:
-    Pair(KeyType key, ValueType* value)
+    Pair(KeyType key, ValueType value)
         : key(key), value(value) {
 
     }
     ~Pair() {
-        if (value) {
-            delete value;
-            value = nullptr;
-        }
-    }
 
+    }
+    inline KeyType Key() { return key; }
+    inline ValueType Value() { return value; }
 private:
     KeyType key;
-    ValueType* value = nullptr;
+    ValueType value;;
 };
 #endif //HOMEWORK_NONLINEARDATASTRUCTURE_PAIR_H
