@@ -14,7 +14,7 @@ class HashTable {
     using Entry = Pair<std::string, Item*>;
 public:
     bool Add(std::string name, std::string type, int value);
-    bool Find(std::string name);
+    Entry* Find(std::string name);
     bool Remove(std::string name);
     bool List();
 private:

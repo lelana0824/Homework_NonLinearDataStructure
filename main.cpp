@@ -85,11 +85,23 @@ int main() {
 
     table.List();
 
-    std::cout << table.Find("Old_Cloth") << "\n\n";
+    auto find = table.Find("Old_Cloth");
+
+    if (find) {
+        std::cout << "값을 찾았습니다.\n";
+        std::cout << find->Key() << "\n\n";
+    }
 
     table.Remove("Old_Cloth");
 
-    std::cout << table.Find("Old_Cloth") << "\n\n";
+    find = table.Find("Old_Cloth");
+
+    if (find) {
+        std::cout << "삭제된 값을 찾았습니다.";
+        std::cout << find->Key() << "\n\n";
+    } else {
+        std::cout << "해당값은 삭제되었습니다.";
+    }
 
     return 0;
     // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.

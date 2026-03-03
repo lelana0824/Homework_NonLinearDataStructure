@@ -5,12 +5,15 @@
 #include "HashTable.h"
 #include <iostream>
 
-// 해시생성함수
 static int GenerateHash(std::string key) {
-    int res = 0;
+    int hash = 0;
 
-    res += (res * 31) + atoi(key.c_str());
-    return std::abs(res);
+    const int length = static_cast<int>(key.length());
+    for (int i = 0; i < length; i++)
+    {
+        hash = hash * 31 + key[i];
+    }
+    return std::abs(hash);
 }
 
 bool HashTable::Add(std::string name, std::string type, int value) {
@@ -32,12 +35,35 @@ bool HashTable::Add(std::string name, std::string type, int value) {
     return true;
 }
 
-bool HashTable::Find(std::string name) {
+Pair<std::string, Item*>* HashTable::Find(std::string name) {
+    int hash = GenerateHash(name) % listCount;
+    std::vector<Entry*>& position = list[hash];
 
+    for (Entry* e : position) {
+        if (e->Key() == name) {
+            return e;
+        }
+    }
+
+    return nullptr;
 }
 
 bool HashTable::Remove(std::string name) {
+    int hash = GenerateHash(name) % listCount;
+    std::vector<Entry*>& position = list[hash];
 
+    for (int i = 0; i < position.size(); i++) {
+        Entry*& e = position[i];
+        if (e->Key() == name) {
+            // 리스트에서 먼저 빼야한다.
+            position.erase(position.begin(), position.begin() + 1);
+            delete e;
+            e = nullptr;
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool HashTable::List() {
