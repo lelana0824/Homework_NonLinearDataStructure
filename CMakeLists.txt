@@ -8,4 +8,5 @@ add_executable(Homework_NonLinearDataStructure main.cpp
         Container/BinarySearchTree.cpp
         Container/BinarySearchTree.h
         PlayerInfo.h
-        Container/Pair.h)
+        Container/Pair.h
+        Item.h)
